@@ -7,7 +7,7 @@ services:
     depends_on:
       - db
     volumes:
-      - odoo-web-data:/var/lib/odoo
+#      - odoo-web-data:/var/lib/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf:ro
       - ./addons:/mnt/extra-addons
   db:
@@ -16,8 +16,8 @@ services:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
-    volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
+#    volumes:
+#      - odoo-db-data:/var/lib/postgresql/data/pgdata
   web:
     image: nginx
     ports:
@@ -29,6 +29,6 @@ services:
       - app
     environment:
       - VIRTUAL_HOST
-volumes:
-  odoo-web-data:
-  odoo-db-data:
+#volumes:
+#  odoo-web-data:
+#  odoo-db-data:
